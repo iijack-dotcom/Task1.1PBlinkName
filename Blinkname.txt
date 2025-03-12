@@ -1,0 +1,45 @@
+int RedLED = 13;       // LED pin 
+int shortTime = 450;  // Short blink duration
+int longTime = 1000;    // Long blink duration
+int timing = 2000;    // Delay between letters
+
+
+// Function to control LED blinking
+void switchLED(int blinkTime) {
+  digitalWrite(RedLED, HIGH); // Send some voltage to pin 13 to turn on
+  delay(blinkTime);          // Keep LED on for specified time
+  digitalWrite(RedLED, LOW);  // LED turn off 
+  delay(shortTime);          // Short delay after LED off
+}
+
+void setup() {
+  pinMode(RedLED, OUTPUT); // Set the LED pin as OUTPUT
+}
+
+void loop() {
+  // Using the blinking pattern to represent Morse code for letters
+  // 1st Letter "J" (.---)
+  switchLED(shortTime); 
+  switchLED(longTime);  
+  switchLED(longTime);  
+  switchLED(longTime);  
+  delay(timing);  // Gap between letters
+
+  // 2nd Letter "A" (.-)
+  switchLED(shortTime); 
+  switchLED(longTime);  
+  delay(timing);  
+
+  // 3rd Letter "C" (-.-.)
+  switchLED(longTime); 
+  switchLED(shortTime); 
+  switchLED(longTime); 
+  switchLED(shortTime); 
+  delay(timing);  
+
+  // 4th Letter "K" (-.-)
+  switchLED(longTime); 
+  switchLED(shortTime);  
+  switchLED(longTime); 
+  delay(timing);  
+}
